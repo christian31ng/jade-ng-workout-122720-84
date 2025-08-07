@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dumbbell, Users, Clock, Smartphone, TrendingUp } from "lucide-react";
+import { Calendar, CheckSquare, Clock, Smartphone, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { notificationService } from "@/services/notificationService";
 
@@ -19,15 +19,15 @@ const Home = () => {
         {/* Header */}
         <div className="text-center py-6 px-4">
           <div className="flex justify-center mb-6">
-            <div className="gradient-primary p-4 rounded-2xl shadow-glow">
-              <Dumbbell className="w-12 h-12 text-background" />
+            <div className="bg-primary p-4 rounded-2xl shadow-soft">
+              <Calendar className="w-12 h-12 text-primary-foreground" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-fitness-primary to-fitness-secondary bg-clip-text text-transparent mb-4 pb-2 leading-tight">
-            JadeNg Training App
+          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4 pb-2 leading-tight">
+            Enji's Sched
           </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            Developed by Jade Estocapio & Christian Ng
+            Your Personal Task Scheduler
           </p>
         </div>
 
@@ -36,14 +36,14 @@ const Home = () => {
           <Card className="mobile-card shadow-soft border-0 bg-card/70 backdrop-blur-sm">
             <CardContent className="p-6 text-center">
               <p className="text-foreground leading-relaxed mb-6 text-sm">
-                Schedule workout programs and exercises with set timers, music, and progress tracking to help you achieve your fitness goals.
+                Plan your daily tasks with a beautiful calendar interface. Track your progress and stay organized with this mobile-first scheduling app.
               </p>
               
               <Button 
-                onClick={() => navigate('/scheduler')}
-                className="mobile-button w-full gradient-primary text-background font-semibold hover:opacity-90 transition-all duration-300 shadow-glow"
+                onClick={() => navigate('/calendar')}
+                className="mobile-button w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold transition-all duration-300"
               >
-                Set Your Exercise
+                Start Scheduling
               </Button>
             </CardContent>
           </Card>
@@ -57,28 +57,28 @@ const Home = () => {
         {/* Features Preview */}
         <div className="grid grid-cols-2 gap-3 mb-6 sm:grid-cols-4">
           <div className="text-center">
-            <div className="bg-fitness-primary/20 p-3 rounded-xl w-fit mx-auto mb-2">
-              <Users className="w-5 h-5 text-fitness-primary" />
+            <div className="bg-primary/20 p-3 rounded-xl w-fit mx-auto mb-2">
+              <Calendar className="w-5 h-5 text-primary" />
             </div>
-            <p className="text-xs text-muted-foreground">Weekly Planning</p>
+            <p className="text-xs text-muted-foreground">Calendar View</p>
           </div>
           <div className="text-center">
-            <div className="bg-fitness-secondary/20 p-3 rounded-xl w-fit mx-auto mb-2">
-              <Dumbbell className="w-5 h-5 text-fitness-secondary" />
+            <div className="bg-accent/20 p-3 rounded-xl w-fit mx-auto mb-2">
+              <CheckSquare className="w-5 h-5 text-accent" />
             </div>
-            <p className="text-xs text-muted-foreground">Custom Exercises</p>
+            <p className="text-xs text-muted-foreground">Task Tracking</p>
           </div>
           <div className="text-center">
-            <div className="bg-fitness-accent/20 p-3 rounded-xl w-fit mx-auto mb-2">
-              <Clock className="w-5 h-5 text-fitness-accent" />
+            <div className="bg-secondary/20 p-3 rounded-xl w-fit mx-auto mb-2">
+              <Smartphone className="w-5 h-5 text-secondary-foreground" />
             </div>
-            <p className="text-xs text-muted-foreground">Timer & Music</p>
+            <p className="text-xs text-muted-foreground">Mobile First</p>
           </div>
           <div className="text-center">
-            <div className="bg-fitness-success/20 p-3 rounded-xl w-fit mx-auto mb-2">
-              <TrendingUp className="w-5 h-5 text-fitness-success" />
+            <div className="bg-muted/20 p-3 rounded-xl w-fit mx-auto mb-2">
+              <TrendingUp className="w-5 h-5 text-muted-foreground" />
             </div>
-            <p className="text-xs text-muted-foreground">Progress Tracking</p>
+            <p className="text-xs text-muted-foreground">Progress View</p>
           </div>
         </div>
       </div>
