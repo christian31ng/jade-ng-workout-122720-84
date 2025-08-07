@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 25% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 220 25% 8%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 142 76% 36%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 142 76% 36%;
+
+    /* Safe area support for mobile devices */
+    --safe-area-inset-top: env(safe-area-inset-top);
+    --safe-area-inset-right: env(safe-area-inset-right);
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    --safe-area-inset-left: env(safe-area-inset-left);
+
+    /* Professional fitness theme colors */
+    --fitness-primary: 142 76% 36%;
+    --fitness-primary-glow: 142 76% 50%;
+    --fitness-secondary: 47 96% 53%;
+    --fitness-secondary-glow: 47 96% 65%;
+    --fitness-accent: 271 81% 56%;
+    --fitness-accent-glow: 271 81% 70%;
+    --fitness-danger: 0 84% 60%;
+    --fitness-success: 142 76% 36%;
+    --fitness-warning: 48 96% 53%;
+    
+    /* Professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(47 96% 53%), hsl(47 96% 65%));
+    --gradient-accent: linear-gradient(135deg, hsl(271 81% 56%), hsl(271 81% 70%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 25% 8%), hsl(220 20% 12%));
+    --gradient-mobile: linear-gradient(135deg, hsl(142 76% 36%), hsl(47 96% 53%));
+    
+    /* Professional 3D shadows */
+    --shadow-glow: 0 0 30px hsl(142 76% 36% / 0.4);
+    --shadow-soft: 0 4px 20px hsl(220 25% 8% / 0.3);
+    --shadow-mobile: 0 2px 12px hsl(220 25% 8% / 0.2);
+    --shadow-card: 0 8px 32px hsl(220 25% 8% / 0.4);
+    --shadow-3d: 
+      0 1px 2px hsl(220 25% 8% / 0.1),
+      0 4px 8px hsl(220 25% 8% / 0.15),
+      0 8px 16px hsl(220 25% 8% / 0.2);
+    --shadow-3d-hover: 
+      0 2px 4px hsl(220 25% 8% / 0.15),
+      0 8px 16px hsl(220 25% 8% / 0.2),
+      0 16px 32px hsl(220 25% 8% / 0.25);
+    --shadow-inset: inset 0 2px 4px hsl(220 25% 8% / 0.1);
+    
+    /* Mobile optimized spacing */
+    --mobile-padding: 1rem;
+    --mobile-gap: 0.75rem;
+    --mobile-radius: 0.75rem;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: 16px; /* Prevent zoom on iOS */
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  /* Mobile-first utility classes */
+  .mobile-container {
+    @apply px-4 py-4 max-w-sm mx-auto sm:max-w-md md:max-w-lg lg:max-w-xl;
+  }
+  
+  .mobile-card {
+    @apply rounded-xl border bg-card p-4 transition-all duration-300;
+    box-shadow: var(--shadow-3d);
+    transform: translateZ(0);
+  }
+  
+  .mobile-card:hover {
+    box-shadow: var(--shadow-3d-hover);
+    transform: translateY(-2px) translateZ(0);
+  }
+  
+  .mobile-button {
+    @apply min-h-[44px] min-w-[44px] text-base font-medium rounded-xl touch-manipulation transition-all duration-200;
+    box-shadow: var(--shadow-3d);
+  }
+  
+  .mobile-button:hover {
+    box-shadow: var(--shadow-3d-hover);
+    transform: translateY(-1px);
+  }
+  
+  .mobile-button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-mobile);
+  }
+  
+  .mobile-grid {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3;
+  }
+  
+  .mobile-input {
+    @apply min-h-[44px] text-base px-4 py-3 rounded-xl border transition-all duration-200;
+    box-shadow: var(--shadow-inset);
+  }
+  
+  .mobile-input:focus {
+    box-shadow: var(--shadow-3d);
+    transform: translateY(-1px);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-mobile {
+    background: var(--gradient-mobile);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-3d {
+    box-shadow: var(--shadow-3d);
+  }
+  
+  .shadow-3d-hover {
+    box-shadow: var(--shadow-3d-hover);
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .touch-action-manipulation {
+    touch-action: manipulation;
+  }
+  
+  /* Enhanced mobile responsiveness */
+  @media (max-width: 640px) {
+    .mobile-container {
+      @apply px-3 py-3;
+    }
+    
+    .mobile-card {
+      @apply p-3;
+    }
+    
+    .mobile-grid {
+      @apply gap-3;
+    }
+  }
+  
+  /* Safe area utilities */
+  .pb-safe-area-inset-bottom {
+    padding-bottom: max(1rem, var(--safe-area-inset-bottom));
+  }
+  
+  .pt-safe-area-inset-top {
+    padding-top: max(1rem, var(--safe-area-inset-top));
+  }
+  
+  @media (min-width: 641px) and (max-width: 768px) {
+    .mobile-container {
+      @apply px-5 py-5;
+    }
+  }
+}

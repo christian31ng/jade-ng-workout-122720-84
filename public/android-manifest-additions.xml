@@ -1,0 +1,19 @@
+<!-- Add these permissions to your Android manifest for alarm functionality -->
+<!-- This file should be referenced when building the Android app -->
+
+<!-- Required for alarm scheduling -->
+<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+<uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
+<!-- Required for notifications -->
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+<!-- Required for alarms to work in doze mode -->
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+<!-- For system alarm sounds -->
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+<!-- Optional: For vibration on alarm -->
+<uses-permission android:name="android.permission.VIBRATE" />
