@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, ChevronRight, Plus, Settings } from "lucide-react";
 import { format, isToday } from "date-fns";
-import TaskList from "@/components/TaskList";
-import TaskModal from "@/components/TaskModal";
+import TaskDetailModal from "@/components/TaskDetailModal";
 import CustomCalendar from "@/components/CustomCalendar";
 
 interface Task {
@@ -21,7 +20,7 @@ interface DayTasks {
 const ScheduleCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [tasks, setTasks] = useState<DayTasks>({});
-  const [showTaskModal, setShowTaskModal] = useState(false);
+  const [showTaskDetailModal, setShowTaskDetailModal] = useState(false);
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
   useEffect(() => {
@@ -66,7 +65,20 @@ const ScheduleCalendar = () => {
       [dateKey]: [...(tasks[dateKey] || []), newTask]
     };
     saveTasks(newTasks);
-    setShowTaskModal(false);
+  };
+
+  const editTask = (taskId: string, newText: string) => {
+    const dateKey = getDateKey(selectedDate);
+    const dayTasks = tasks[dateKey] || [];
+    const updatedTasks = dayTasks.map(task =>
+      task.id === taskId ? { ...task, text: newText } : task
+    );
+
+    const newTasks = {
+      ...tasks,
+      [dateKey]: updatedTasks
+    };
+    saveTasks(newTasks);
   };
 
   const toggleTask = (taskId: string) => {
@@ -95,9 +107,9 @@ const ScheduleCalendar = () => {
     saveTasks(newTasks);
   };
 
-  const getCurrentDayTasks = () => {
-    const dateKey = getDateKey(selectedDate);
-    return tasks[dateKey] || [];
+  const handleDateSelect = (date: Date) => {
+    setSelectedDate(date);
+    setShowTaskDetailModal(true);
   };
 
   return (
@@ -114,13 +126,14 @@ const ScheduleCalendar = () => {
         </div>
 
         {/* Calendar Section */}
-        <Card className="mobile-card mb-6">
+        <Card className="mobile-card mb-6 shadow-3d">
           <CardContent className="p-4">
             <div className="flex items-center justify-between mb-4">
               <Button 
                 variant="ghost" 
                 size="sm"
                 onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
+                className="hover-scale"
               >
                 <ChevronLeft className="w-4 h-4" />
               </Button>
@@ -131,6 +144,7 @@ const ScheduleCalendar = () => {
                 variant="ghost" 
                 size="sm"
                 onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
+                className="hover-scale"
               >
                 <ChevronRight className="w-4 h-4" />
               </Button>
@@ -139,50 +153,23 @@ const ScheduleCalendar = () => {
             <CustomCalendar
               selectedDate={selectedDate}
               currentMonth={currentMonth}
-              onSelectDate={setSelectedDate}
+              onSelectDate={handleDateSelect}
               getTaskCount={getTaskCount}
             />
           </CardContent>
         </Card>
 
-        {/* Selected Date Section */}
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h3 className="text-lg font-semibold">
-              {format(selectedDate, 'EEEE, MMMM d')}
-              {isToday(selectedDate) && (
-                <span className="text-primary ml-2 text-sm font-normal">Today</span>
-              )}
-            </h3>
-            <p className="text-sm text-muted-foreground">
-              {getCurrentDayTasks().length} task{getCurrentDayTasks().length !== 1 ? 's' : ''}
-            </p>
-          </div>
-          <Button 
-            onClick={() => setShowTaskModal(true)}
-            size="sm"
-            className="mobile-button bg-primary hover:bg-primary/90"
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Add Task
-          </Button>
-        </div>
-
-        {/* Tasks List */}
-        <TaskList
-          tasks={getCurrentDayTasks()}
+        {/* Task Detail Modal */}
+        <TaskDetailModal
+          isOpen={showTaskDetailModal}
+          onClose={() => setShowTaskDetailModal(false)}
+          selectedDate={selectedDate}
+          tasks={tasks[getDateKey(selectedDate)] || []}
           onToggleTask={toggleTask}
           onDeleteTask={deleteTask}
+          onAddTask={addTask}
+          onEditTask={editTask}
         />
-
-        {/* Task Modal */}
-        {showTaskModal && (
-          <TaskModal
-            onAddTask={addTask}
-            onClose={() => setShowTaskModal(false)}
-            selectedDate={selectedDate}
-          />
-        )}
       </div>
     </div>
   );

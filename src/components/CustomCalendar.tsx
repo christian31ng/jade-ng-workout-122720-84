@@ -63,18 +63,19 @@ const CustomCalendar = ({ selectedDate, currentMonth, onSelectDate, getTaskCount
               key={index}
               variant="ghost"
               className={cn(
-                "relative h-12 w-full p-1 text-sm font-normal",
+                "relative h-12 w-full p-1 text-sm font-normal transition-all duration-200",
                 !isCurrentMonth && "text-muted-foreground opacity-50",
-                isSelected && "bg-accent text-accent-foreground border-2 border-primary",
-                isTodayDate && !isSelected && "bg-primary text-primary-foreground font-bold",
-                "hover:bg-accent hover:text-accent-foreground"
+                isSelected && "bg-primary text-primary-foreground border-2 border-primary shadow-glow scale-105",
+                isTodayDate && !isSelected && "bg-primary/20 text-primary font-bold border border-primary",
+                "hover:bg-accent hover:text-accent-foreground hover:scale-105 hover:shadow-soft",
+                "mobile-card"
               )}
               onClick={() => onSelectDate(date)}
             >
               <div className="relative flex items-center justify-center w-full h-full">
-                <span>{format(date, 'd')}</span>
+                <span className="z-10">{format(date, 'd')}</span>
                 {taskCount > 0 && (
-                  <div className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold z-10">
+                  <div className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold z-20 shadow-3d animate-scale-in">
                     {taskCount}
                   </div>
                 )}

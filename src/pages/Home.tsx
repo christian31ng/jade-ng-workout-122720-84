@@ -27,7 +27,7 @@ const Home = () => {
             Enji's Sched
           </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            Your Personal Task Scheduler
+            Developed by Christian Anthony Pua Ng
           </p>
         </div>
 

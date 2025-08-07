@@ -17,8 +17,8 @@ All colors MUST be HSL.
     --popover: 220 20% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 142 76% 36%;
-    --primary-foreground: 220 25% 8%;
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 98%;
 
     --secondary: 220 15% 18%;
     --secondary-foreground: 210 40% 98%;
@@ -26,15 +26,15 @@ All colors MUST be HSL.
     --muted: 220 15% 18%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 142 76% 36%;
-    --accent-foreground: 220 25% 8%;
+    --accent: 0 84% 60%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 220 15% 18%;
     --input: 220 15% 18%;
-    --ring: 142 76% 36%;
+    --ring: 0 84% 60%;
 
     /* Safe area support for mobile devices */
     --safe-area-inset-top: env(safe-area-inset-top);
@@ -42,26 +42,26 @@ All colors MUST be HSL.
     --safe-area-inset-bottom: env(safe-area-inset-bottom);
     --safe-area-inset-left: env(safe-area-inset-left);
 
-    /* Professional fitness theme colors */
-    --fitness-primary: 142 76% 36%;
-    --fitness-primary-glow: 142 76% 50%;
-    --fitness-secondary: 47 96% 53%;
-    --fitness-secondary-glow: 47 96% 65%;
-    --fitness-accent: 271 81% 56%;
-    --fitness-accent-glow: 271 81% 70%;
+    /* Professional red theme colors */
+    --fitness-primary: 0 84% 60%;
+    --fitness-primary-glow: 0 84% 70%;
+    --fitness-secondary: 0 84% 50%;
+    --fitness-secondary-glow: 0 84% 65%;
+    --fitness-accent: 0 84% 45%;
+    --fitness-accent-glow: 0 84% 55%;
     --fitness-danger: 0 84% 60%;
     --fitness-success: 142 76% 36%;
     --fitness-warning: 48 96% 53%;
     
-    /* Professional gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 50%));
-    --gradient-secondary: linear-gradient(135deg, hsl(47 96% 53%), hsl(47 96% 65%));
-    --gradient-accent: linear-gradient(135deg, hsl(271 81% 56%), hsl(271 81% 70%));
+    /* Professional red gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(0 84% 50%), hsl(0 84% 65%));
+    --gradient-accent: linear-gradient(135deg, hsl(0 84% 45%), hsl(0 84% 55%));
     --gradient-dark: linear-gradient(180deg, hsl(220 25% 8%), hsl(220 20% 12%));
-    --gradient-mobile: linear-gradient(135deg, hsl(142 76% 36%), hsl(47 96% 53%));
+    --gradient-mobile: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 45%));
     
-    /* Professional 3D shadows */
-    --shadow-glow: 0 0 30px hsl(142 76% 36% / 0.4);
+    /* Enhanced 3D shadows with red glow */
+    --shadow-glow: 0 0 30px hsl(0 84% 60% / 0.4);
     --shadow-soft: 0 4px 20px hsl(220 25% 8% / 0.3);
     --shadow-mobile: 0 2px 12px hsl(220 25% 8% / 0.2);
     --shadow-card: 0 8px 32px hsl(220 25% 8% / 0.4);
@@ -234,6 +234,12 @@ All colors MUST be HSL.
   .touch-action-manipulation {
     touch-action: manipulation;
   }
+  
+  /* Interactive hover effects */
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
   
   /* Enhanced mobile responsiveness */
   @media (max-width: 640px) {
